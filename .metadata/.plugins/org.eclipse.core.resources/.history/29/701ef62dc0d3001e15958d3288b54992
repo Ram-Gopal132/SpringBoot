@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+   xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>User Input</title>
+</head>
+<body>
+	
+	<form action="@{/saveData}" th:object="${user}" method="post">
+		<pre>
+			
+			<label>Enter Your name</label>
+			<input type="text" th:field="*{name}"/>
+			
+		</pre>
+		
+		
+		
+	</form>
+ 
+ </body>
+</html>

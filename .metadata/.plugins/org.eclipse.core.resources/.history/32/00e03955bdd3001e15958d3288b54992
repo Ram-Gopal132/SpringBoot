@@ -1,0 +1,57 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+
+import com.app.entity.User;
+import com.app.repositories.UserRepositories;
+
+
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+
+
+@RestController
+public class Mycontroller {
+	
+	@Autowired
+	UserRepositories userRepositories;
+	
+	@GetMapping("/hello")
+	public String showpage()
+    {
+        
+        return "index";
+
+	}
+	
+	@GetMapping("/showUsers")
+	public String showUsers(Model model) 
+	{
+		model.addAttribute("users",userRepositories.findAll());
+		return "show_user";
+	}
+	
+	@GetMapping("/userForm")
+	public String showForm(Model m)
+	{
+		User user=new User();
+		m.addAttribute("user",user);
+		return "user-input";
+	}
+	
+	
+	@PostMapping("/saveData")
+	public String saveData(@RequestBody String entity) {
+		//TODO: process POST request
+		
+		return entity;
+	}
+	
+
+}
